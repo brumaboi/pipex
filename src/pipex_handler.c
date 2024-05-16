@@ -6,14 +6,14 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:52:22 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/16 14:49:04 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/16 14:59:02 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
 // Function to handle execve
-void	execute_command(const char *cmd, char *const envp[])
+static void	execute_command(const char *cmd, char *const envp[])
 {
 	char	**args;
 
