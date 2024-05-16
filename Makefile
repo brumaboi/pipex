@@ -6,38 +6,46 @@
 #    By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 17:45:57 by sbruma            #+#    #+#              #
-#    Updated: 2024/05/07 22:49:38 by sbruma           ###   ########.fr        #
+#    Updated: 2024/05/16 14:53:16 by sbruma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
-UTILSNAME = utils.a
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
-UTILSDIR = ./utils
+NAME			=	pipex
+CC				=	cc
+CFLAGS			=	-Wall -Wextra -Werror
+RM				=	rm -f
+AR				=	ar rcs
 
-SRCS =	pipex.c \
-		pipex_handler.c
+LIBFT_PATH = ./libft
+LIBFT = libft.a
+INC				= inc/
+SRC_DIR			= src/
+OBJ_DIR			= obj/
 
-OBJS = $(SRCS:.c=.o)
+SRC = $(SRC_DIR)pipex.c \
+	  $(SRC_DIR)pipex_handler.c \
+	  $(SRC_DIR)pipex_utils.c
 
-all: $(NAME)
+OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
+all : $(NAME)
 
-makeutils:
-	@make -C $(UTILSDIR)
-	
-$(NAME): makeutils $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(UTILSDIR)/$(UTILSNAME) 
-	@chmod +x $(NAME)
-	
-clean:
-	@rm -f $(OBJS)
-	@cd $(UTILSDIR) && make clean
+$(NAME) : $(OBJ) $(LIBFT_PATH)/$(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT_PATH)/$(LIBFT)
 
-fclean: clean
-	@rm -f $(NAME)
-	@cd $(UTILSDIR) && make fclean
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				@mkdir -p $(@D)
+				@$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 
-re: fclean all
+$(LIBFT_PATH)/$(LIBFT) : 
+	@make -C $(LIBFT_PATH)
 
-.PHONY: all clean fclean re
+clean :
+	@$(RM) -f $(OBJ)
+	@$(RM) -rf $(OBJ_DIR)
+	@make -C $(LIBFT_PATH) clean
+
+fclean : clean
+	@$(RM) -f $(NAME)
+	@make -C $(LIBFT_PATH) fclean
+
+re : clean fclean all

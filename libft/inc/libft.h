@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:37:09 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/15 15:07:04 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:04:10 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 size_t	ft_strnlen(const char *s, size_t maxlen);
+char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strcat(char *dest, const char *src);
 
 //ft_to
 int		ft_toupper(int c);
