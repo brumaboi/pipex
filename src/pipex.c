@@ -6,11 +6,22 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:35:09 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/16 14:50:33 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/16 22:47:19 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
+
+static void	open_files(int *file1, int *file2, char **argv)
+{
+	*file1 = open(argv[1], O_RDONLY);
+	if (*file1 < 0)
+		error_and_exit("open file1");
+	check_file_not_empty(file1, argv[1]);
+	*file2 = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (*file2 < 0)
+		error_and_exit("open file2");
+}
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -22,12 +33,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 5)
 		error_and_exit("usage: ./pipex file1 cmd1 cmd2 file2");
-	file1 = open(argv[1], O_RDONLY);
-	if (file1 < 0)
-		error_and_exit("open file1");
-	file2 = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (file2 < 0)
-		error_and_exit("open file2");
+	open_files(&file1, &file2, argv);
 	create_pipe(pipefd);
 	fork_process(&pid1);
 	if (pid1 == 0)

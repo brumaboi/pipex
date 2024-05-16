@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:55:56 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/16 15:00:27 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/16 22:15:02 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	create_pipe(int *pipefd);
 void	fork_process(pid_t *pid);
 void	handle_child1(int file1, int *pipefd, char *cmd, char *const envp[]);
 void	handle_child2(int file2, int *pipefd, char *cmd, char *const envp[]);
+void	check_file_not_empty(int *file, const char *filename);
 
 #endif

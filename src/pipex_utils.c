@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:50:00 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/16 14:50:38 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/16 22:39:40 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,24 @@ void	fork_process(pid_t *pid)
 	*pid = fork();
 	if (*pid < 0)
 		error_and_exit("fork");
+}
+
+// Check if the file is empty
+void	check_file_not_empty(int *file, const char *filename)
+{
+	char		buff[1];
+	ssize_t		bytes;
+
+	bytes = read(*file, buff, 1);
+	if (bytes == -1)
+		error_and_exit("read");
+	else if (bytes == 0)
+	{
+		close(*file);
+		error_and_exit("Error: Input file is empty\n");
+	}
+	close(*file);
+	*file = open(filename, O_RDONLY);
+	if (*file < 0)
+		error_and_exit("open file1");
 }
