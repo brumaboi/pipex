@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:52:22 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/16 22:08:16 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/20 22:15:00 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ static void	execute_command(const char *cmd, char *const envp[])
 {
 	char	**args;
 
-	args = malloc(4 * sizeof(char *));
+	args = malloc(5 * sizeof(char *));
 	if (!args)
 		error_and_exit("malloc failed");
-	args[0] = "/bin/sh";
-	args[1] = "-c";
-	args[2] = (char *)cmd;
-	args[3] = NULL;
-	execve("/bin/sh", args, envp);
+	args[0] = "/usr/bin/env";
+	args[1] = "sh";
+	args[2] = "-c";
+	args[3] = (char *)cmd;
+	args[4] = NULL;
+	execve("/usr/bin/env", args, envp);
 	error_and_exit("execve failed");
 }
 
