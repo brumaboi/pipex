@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:37:09 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/16 12:04:10 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/27 16:56:05 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@
 # include <stdarg.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <errno.h>
+# include <string.h>
+# include <math.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 //ft_is
 int		ft_isalpha(int c);
@@ -29,6 +36,9 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_ismin(int a, int b);
+int		ft_ismax(int a, int b);
+int		ft_isspace(int c);
 
 //ft_lst
 typedef struct s_list
@@ -98,6 +108,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 size_t	ft_strnlen(const char *s, size_t maxlen);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
+char	*ft_strstr(char *str, char *to_find);
 
 //ft_to
 int		ft_toupper(int c);

@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:52:22 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/20 22:15:00 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/05/28 12:40:03 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,27 @@
 // Function to handle execve
 static void	execute_command(const char *cmd, char *const envp[])
 {
+	int		arg_count;
 	char	**args;
+	char	*cmd_path;
+	int		i;
 
-	args = malloc(5 * sizeof(char *));
+	args = split_string(cmd, &arg_count);
 	if (!args)
-		error_and_exit("malloc failed");
-	args[0] = "/usr/bin/env";
-	args[1] = "sh";
-	args[2] = "-c";
-	args[3] = (char *)cmd;
-	args[4] = NULL;
-	execve("/usr/bin/env", args, envp);
+		error_and_exit("split_string");
+	cmd_path = find_command_path(args[0], envp);
+	if (!cmd_path)
+	{
+		i = 0;
+		while (args[i] != NULL)
+		{
+			free(args[i]);
+			i++;
+		}
+		free(args);
+		error_and_exit("Command not found");
+	}
+	execve(cmd_path, args, envp);
 	error_and_exit("execve failed");
 }
 
