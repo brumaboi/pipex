@@ -6,7 +6,7 @@
 #    By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 17:45:57 by sbruma            #+#    #+#              #
-#    Updated: 2024/06/01 22:40:48 by sbruma           ###   ########.fr        #
+#    Updated: 2024/06/01 23:32:07 by sbruma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC = $(SRC_DIR)pipex.c \
 	  $(SRC_DIR)pipex_handler.c \
 	  $(SRC_DIR)pipex_utils.c \
 	  $(SRC_DIR)split.c \
-	  $(SRC_DIR)path-finder.c
+	  $(SRC_DIR)path-finder.c \
+	  $(SRC_DIR)validate_input.c
 
 SRC_BONUS = 
 

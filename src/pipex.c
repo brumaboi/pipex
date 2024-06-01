@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:35:09 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/28 12:40:26 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/01 23:20:47 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	main(int argc, char *argv[], char *envp[])
 	pid_t	pid1;
 	pid_t	pid2;
 
-	if (argc != 5)
-		error_and_exit("usage: ./pipex file1 cmd1 cmd2 file2");
+	validate_input(argc, argv);
 	open_files(&file1, &file2, argv);
 	create_pipe(pipefd);
 	fork_process(&pid1);

@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:55:56 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/28 12:43:43 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/01 23:27:33 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	handle_child2(int file2, int *pipefd, char *cmd, char *const envp[]);
 void	check_file_not_empty(int *file, const char *filename);
 char	*find_command_path(const char *cmd, char *const envp[]);
 char	**split_string(const char *str, int *count);
+void	validate_input(argc, argv);
 
 #endif
