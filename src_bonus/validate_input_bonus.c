@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_input.c                                   :+:      :+:    :+:   */
+/*   validate_input_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 23:18:34 by sbruma            #+#    #+#             */
-/*   Updated: 2024/06/01 23:48:17 by sbruma           ###   ########.fr       */
+/*   Created: 2024/05/28 11:53:04 by sbruma            #+#    #+#             */
+/*   Updated: 2024/06/02 01:54:02 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pipex.h"
+#include "../inc_bonus/pipex_bonus.h"
 
 // Recursive function to count double quotes in a string
 static int	count_double_quotes(const char *str)
@@ -35,26 +35,28 @@ static int	is_empty_command(const char *str)
 }
 
 // Recursive function to validate commands
-static void	validate_commands(char *cmd1, char *cmd2)
+static void	validate_commands(int argc, char *argv[], int idx)
 {
-	if (is_empty_command(cmd1))
-		error_and_exit("Invalid command: cmd1 cannot be empty.");
-	if (is_empty_command(cmd2))
-		error_and_exit("Invalid command: cmd2 cannot be empty.");
-	if (count_double_quotes(cmd1) % 2 != 0)
-		error_and_exit("Invalid syntax: unbalanced double quotes in cmd1.");
-	if (count_double_quotes(cmd2) % 2 != 0)
-		error_and_exit("Invalid syntax: unbalanced double quotes in cmd2.");
+	int	quote_count;
+
+	if (idx >= argc - 1)
+		return ;
+	if (is_empty_command(argv[idx]))
+		error_and_exit("Invalid command: command cannot be empty.");
+	quote_count = count_double_quotes(argv[idx]);
+	if (quote_count % 2 != 0)
+		error_and_exit("Invalid syntax: unbalanced double quotes in commands.");
+	validate_commands(argc, argv, idx + 1);
 }
 
 // Function to validate input arguments recursively
 void	validate_input(int argc, char *argv[])
 {
-	if (argc != 5)
-		error_and_exit("usage: ./pipex file1 cmd1 cmd2 file2");
+	if (argc < 5)
+		error_and_exit("usage: ./pipex file1 cmd1 ... cmdN file2");
 	if (is_empty_command(argv[1]))
 		error_and_exit("Invalid input file: input file cannot be empty.");
-	if (is_empty_command(argv[4]))
+	if (is_empty_command(argv[argc - 1]))
 		error_and_exit("Invalid output file: output file cannot be empty.");
-	validate_commands(argv[2], argv[3]);
+	validate_commands(argc, argv, 2);
 }
