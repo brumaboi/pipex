@@ -6,7 +6,7 @@
 #    By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 17:45:57 by sbruma            #+#    #+#              #
-#    Updated: 2024/06/02 01:50:21 by sbruma           ###   ########.fr        #
+#    Updated: 2024/06/02 02:32:14 by sbruma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ $(NAME) : $(OBJ) $(LIBFT_PATH)/$(LIBFT)
 	@echo "                                    "
 	@echo "__________.__                       "
 	@echo "\______   \__|_____   ____ ___  ___ "
-	@echo " |     ___/  \____ \_/ __ \\  \/  / "
+	@echo " |     ___/  \____ \_/ __ \\   \/  / "
 	@echo " |    |   |  |  |_> >  ___/ >    <  "
 	@echo " |____|   |__|   __/ \___  >__/\_ \ "
 	@echo "             |__|        \/      \/ "
@@ -83,7 +83,7 @@ $(NAME) : $(OBJ) $(LIBFT_PATH)/$(LIBFT)
 	echo "                                    "; \
 	echo "__________.__                       "; \
 	echo "\______   \__|_____   ____ ___  ___ "; \
-	echo " |     ___/  \____ \_/ __ \\  \/  / "; \
+	echo " |     ___/  \____ \_/ __ \\   \/  / "; \
 	echo " |    |   |  |  |_> >  ___/ >    <  "; \
 	echo " |____|   |__|   __/ \___  >__/\_ \ "; \
 	echo "             |__|        \/      \/ "; \
@@ -99,7 +99,7 @@ $(NAME) : $(OBJ) $(LIBFT_PATH)/$(LIBFT)
 	echo "                                    "; \
 	echo "__________.__                       "; \
 	echo "\______   \__|_____   ____ ___  ___ "; \
-	echo " |     ___/  \____ \_/ __ \\  \/  / "; \
+	echo " |     ___/  \____ \_/ __ \\   \/  / "; \
 	echo " |    |   |  |  |_> >  ___/ >    <  "; \
 	echo " |____|   |__|   __/ \___  >__/\_ \ "; \
 	echo "             |__|        \/      \/ "; \
@@ -117,7 +117,7 @@ $(NAME_BONUS) : $(BONUS_OBJ) $(LIBFT_PATH)/$(LIBFT)
 	@echo "                                    "
 	@echo "__________.__                       "
 	@echo "\______   \__|_____   ____ ___  ___ "
-	@echo " |     ___/  \____ \_/ __ \\  \/  / "
+	@echo " |     ___/  \____ \_/ __ \\   \/  / "
 	@echo " |    |   |  |  |_> >  ___/ >    <  "
 	@echo " |____|   |__|   __/ \___  >__/\_ \ "
 	@echo "             |__|        \/      \/ "
@@ -135,7 +135,7 @@ $(NAME_BONUS) : $(BONUS_OBJ) $(LIBFT_PATH)/$(LIBFT)
 	echo "                                    "; \
 	echo "__________.__                       "; \
 	echo "\______   \__|_____   ____ ___  ___ "; \
-	echo " |     ___/  \____ \_/ __ \\  \/  / "; \
+	echo " |     ___/  \____ \_/ __ \\   \/  / "; \
 	echo " |    |   |  |  |_> >  ___/ >    <  "; \
 	echo " |____|   |__|   __/ \___  >__/\_ \ "; \
 	echo "             |__|        \/      \/ "; \
@@ -151,7 +151,7 @@ $(NAME_BONUS) : $(BONUS_OBJ) $(LIBFT_PATH)/$(LIBFT)
 	echo "                                    "; \
 	echo "__________.__                       "; \
 	echo "\______   \__|_____   ____ ___  ___ "; \
-	echo " |     ___/  \____ \_/ __ \\  \/  / "; \
+	echo " |     ___/  \____ \_/ __ \\   \/  / "; \
 	echo " |    |   |  |  |_> >  ___/ >    <  "; \
 	echo " |____|   |__|   __/ \___  >__/\_ \ "; \
 	echo "             |__|        \/      \/ "; \
@@ -175,102 +175,116 @@ $(LIBFT_PATH)/$(LIBFT) :
 create_files:
 	@touch input.txt
 	@touch output.txt
-	@echo "##1" > test_list.txt
-	@echo "Command: ./pipex input.txt \"cat\" \"cat\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##2" >> test_list.txt
-	@echo "Command: ./pipex input.txt \"cat\" \"grep Hello\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Goodbye, World!" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##3 -bonus" >> test_list.txt
-	@echo "Command: ./pipex_bonus input.txt \"cat\" \"grep Hello\" \"sort\" \"uniq\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Hello, Universe!" >> test_list.txt
-	@echo "Goodbye, World!" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "Hello, Universe!" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##4" >> test_list.txt
-	@echo "Command: ./pipex non_existent.txt \"cat\" \"cat\" output.txt" >> test_list.txt
-	@echo "Expected Output:" >> test_list.txt
-	@echo "(error message about non-existent file)" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##5" >> test_list.txt
-	@echo "Command: ./pipex input.txt \"invalid_command\" \"cat\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "(error message about invalid command)" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##6" >> test_list.txt
-	@echo "Command: ./pipex input.txt \"echo a;b\" \"sed 's/;/,/g'\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "a;b" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "a,b" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##7 -bonus" >> test_list.txt
-	@echo "Command: ./pipex_bonus input.txt \"cat\" \"|\" \"grep Hello\" output.txt" >> test_list.txt
-	@echo "Expected Output:" >> test_list.txt
-	@echo "(error message about syntax error)" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##8 -bonus" >> test_list.txt
-	@echo "Command: ./pipex_bonus input.txt \"cat\" \"\" \"grep Hello\" output.txt" >> test_list.txt
-	@echo "Expected Output:" >> test_list.txt
-	@echo "(error message about empty command)" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##9" >> test_list.txt
-	@echo "Command: ./pipex input.txt \"cat\" \">&-\" output.txt" >> test_list.txt
-	@echo "Expected Output:" >> test_list.txt
-	@echo "(error message about invalid file descriptor)" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##10 -bonus" >> test_list.txt
-	@echo "Command: ./pipex_bonus input.txt \"cat\" \"grep Hello\" \"sort\" \"uniq\" \"wc -l\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Hello, Universe!" >> test_list.txt
-	@echo "Goodbye, World!" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "2" >> test_list.txt
-	@echo >> test_list.txt
-	@echo >> test_list.txt
-	@echo "##11 -add" >> test_list.txt
-	@echo "Command: ./pipex input.txt \"grep Hello\" \"awk '{print \$1}'\" output.txt" >> test_list.txt
-	@echo "Input (input.txt):" >> test_list.txt
-	@echo "Hello, World!" >> test_list.txt
-	@echo "Hello, Universe!" >> test_list.txt
-	@echo "Goodbye, World!" >> test_list.txt
-	@echo "Expected Output (output.txt):" >> test_list.txt
-	@echo "Hello" >> test_list.txt
-	@echo "Hello" >> test_list.txt
+	@echo "##1" > test_list.log
+	@echo "Command: ./pipex input.txt \"cat\" \"cat\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##2" >> test_list.log
+	@echo "Command: ./pipex input.txt \"cat\" \"grep Hello\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Goodbye, World!" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##3 -bonus" >> test_list.log
+	@echo "Command: ./pipex_bonus input.txt \"cat\" \"grep Hello\" \"sort\" \"uniq\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Hello, Universe!" >> test_list.log
+	@echo "Goodbye, World!" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "Hello, Universe!" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##4" >> test_list.log
+	@echo "Command: ./pipex non_existent.txt \"cat\" \"cat\" output.txt" >> test_list.log
+	@echo "Expected Output:" >> test_list.log
+	@echo "(error message about non-existent file)" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##5" >> test_list.log
+	@echo "Command: ./pipex input.txt \"invalid_command\" \"cat\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "(error message about invalid command)" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##6" >> test_list.log
+	@echo "Command: ./pipex input.txt \"echo a;b\" \"sed 's/;/,/g'\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "a;b" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "a,b" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##7 -bonus" >> test_list.log
+	@echo "Command: ./pipex_bonus input.txt \"cat\" \"|\" \"grep Hello\" output.txt" >> test_list.log
+	@echo "Expected Output:" >> test_list.log
+	@echo "(error message about syntax error)" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##8 -bonus" >> test_list.log
+	@echo "Command: ./pipex_bonus input.txt \"cat\" \"\" \"grep Hello\" output.txt" >> test_list.log
+	@echo "Expected Output:" >> test_list.log
+	@echo "(error message about empty command)" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##9" >> test_list.log
+	@echo "Command: ./pipex input.txt \"cat\" \">&-\" output.txt" >> test_list.log
+	@echo "Expected Output:" >> test_list.log
+	@echo "(error message about invalid file descriptor)" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##10 -bonus" >> test_list.log
+	@echo "Command: ./pipex_bonus input.txt \"cat\" \"grep Hello\" \"sort\" \"uniq\" \"wc -l\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Hello, Universe!" >> test_list.log
+	@echo "Goodbye, World!" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "2" >> test_list.log
+	@echo >> test_list.log
+	@echo >> test_list.log
+	@echo "##11 -add" >> test_list.log
+	@echo "Command: ./pipex input.txt \"grep Hello\" \"awk '{print \$1}'\" output.txt" >> test_list.log
+	@echo "Input (input.txt):" >> test_list.log
+	@echo "Hello, World!" >> test_list.log
+	@echo "Hello, Universe!" >> test_list.log
+	@echo "Goodbye, World!" >> test_list.log
+	@echo "Expected Output (output.txt):" >> test_list.log
+	@echo "Hello" >> test_list.log
+	@echo "Hello" >> test_list.log
 
 
 clean :
 	@$(RM) -f $(OBJ) $(BONUS_OBJ)
 	@$(RM) -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
 	@make -C $(LIBFT_PATH) clean > /dev/null 2>&1
-	@$(RM) -f input.txt output.txt test_list.txt
+	@$(RM) -f input.txt output.txt test_list.log
+	clear; \
+	echo  "$(CYAN)  ______   ______   ______   ______ "
+	@echo  " /_____/  /_____/  /_____/  /_____/ "
+	@echo  "                                    "
+	@echo  "       .__                          "
+	@echo  "  ____ |  |   ____ _____    ____    "
+	@echo  "_/ ___\|  | _/ __ \\\\__   \  /    \   "
+	@echo  "\  \___|  |_\  ___/ / __ \|   |  \  "
+	@echo  " \___  >____/\___  >____  /___|  /  "
+	@echo  "     \/          \/     \/     \/   "
+	@echo  "                                    "
+	@echo  "                           -sbruma  "
+	@echo  "  ______   ______   ______   ______ "
+	@echo  " /_____/  /_____/  /_____/  /_____/ $(NC)"
 
 fclean : clean
 	@$(RM) -f $(NAME) $(NAME_BONUS)
