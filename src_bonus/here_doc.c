@@ -16,7 +16,7 @@
 void	open_files_for_here_doc(int *file1, int *file2, char **argv, int argc)
 {
 	*file1 = STDIN_FILENO;
-	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
+	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (*file2 < 0)
 		error_and_exit("open file2");
 }

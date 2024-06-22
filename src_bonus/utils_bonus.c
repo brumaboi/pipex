@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:08:47 by sbruma            #+#    #+#             */
-/*   Updated: 2024/06/04 13:43:22 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/22 23:22:36 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	open_files(int *file1, int *file2, char **argv, int argc)
 	if (*file1 < 0)
 		error_and_exit("open file1");
 	check_file_not_empty(file1, argv[1]);
-	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
+	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (*file2 < 0)
 		error_and_exit("open file2");
 }

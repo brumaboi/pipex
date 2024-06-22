@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:50:00 by sbruma            #+#    #+#             */
-/*   Updated: 2024/05/28 13:01:32 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/22 23:21:50 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,9 @@ void	check_file_not_empty(int *file, const char *filename)
 	bytes = read(*file, buff, 1);
 	if (bytes == -1)
 		error_and_exit("read");
-	else if (bytes == 0)
-	{
-		close(*file);
-		error_and_exit("Error: Input file is empty");
-	}
 	close(*file);
+	if (bytes == 0)
+		ft_putstr_fd("Error: Input file is empty\n", STDERR_FILENO);
 	*file = open(filename, O_RDONLY);
 	if (*file < 0)
 		error_and_exit("open file1");
