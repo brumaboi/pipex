@@ -74,4 +74,3 @@ void	handle_here_doc_commands(t_command_params *params,
 	else
 		handle_parent_process(params, pipefd, out_fd);
 }
-
