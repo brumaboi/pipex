@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:02:16 by sbruma            #+#    #+#             */
-/*   Updated: 2024/06/02 02:10:29 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/22 21:33:39 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,9 @@ char	*find_command_path(const char *cmd, char *const envp[]);
 
 //validate_input_bonus.c
 void	validate_input(int argc, char *argv[]);
+
+//here_doc.c
+void	handle_here_doc_commands(t_command_params *params, int out_fd,
+			const char *limiter);
+void	open_files_for_here_doc(int *file1, int *file2, char **argv, int argc);
 #endif

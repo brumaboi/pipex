@@ -6,7 +6,7 @@
 #    By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 17:45:57 by sbruma            #+#    #+#              #
-#    Updated: 2024/06/02 02:32:14 by sbruma           ###   ########.fr        #
+#    Updated: 2024/06/22 21:36:52 by sbruma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRC_BONUS = $(SRC_BONUS_DIR)pipex_bonus.c \
 			$(SRC_BONUS_DIR)split_bonus.c \
 			$(SRC_BONUS_DIR)error_bonus.c \
 			$(SRC_BONUS_DIR)path-finder_bonus.c \
-			$(SRC_BONUS_DIR)validate_input_bonus.c
+			$(SRC_BONUS_DIR)validate_input_bonus.c \
+			$(SRC_BONUS_DIR)here_doc.c
 
 OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 BONUS_OBJ = $(patsubst $(SRC_BONUS_DIR)%.c,$(OBJ_BONUS_DIR)%.o,$(SRC_BONUS))
@@ -262,8 +263,8 @@ create_files:
 	@echo "Hello, Universe!" >> test_list.log
 	@echo "Goodbye, World!" >> test_list.log
 	@echo "Expected Output (output.txt):" >> test_list.log
-	@echo "Hello" >> test_list.log
-	@echo "Hello" >> test_list.log
+	@echo "Hello," >> test_list.log
+	@echo "Hello," >> test_list.log
 
 
 clean :
