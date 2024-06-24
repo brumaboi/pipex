@@ -12,15 +12,6 @@
 
 #include "../inc_bonus/pipex_bonus.h"
 
-// Function to open files for here_doc
-void	open_files_for_here_doc(int *file1, int *file2, char **argv, int argc)
-{
-	*file1 = STDIN_FILENO;
-	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
-	if (*file2 < 0)
-		error_and_exit("open file2");
-}
-
 static void	read_and_write_lines(int write_fd, const char *limiter)
 {
 	char	*line;
@@ -49,10 +40,10 @@ static void	handle_child_process(int *pipefd, const char *limiter)
 }
 
 static void	handle_parent_process(t_command_params *params,
-			int *pipefd, int out_fd)
+			int *pipefd, int out_fd, pid_t child_pid)
 {
 	close(pipefd[1]);
-	wait(NULL);
+	waitpid(child_pid, NULL, 0);
 	params->cmd_idx++;
 	handle_commands_recursively(params, pipefd[0], out_fd);
 	close(pipefd[0]);
@@ -64,13 +55,10 @@ void	handle_here_doc_commands(t_command_params *params,
 	pid_t	pid;
 	int		pipefd[2];
 
-	if (pipe(pipefd) == -1)
-		error_and_exit("pipe failed");
-	pid = fork();
-	if (pid == -1)
-		error_and_exit("fork failed");
+	create_pipe(pipefd);
+	fork_process(&pid);
 	if (pid == 0)
 		handle_child_process(pipefd, limiter);
 	else
-		handle_parent_process(params, pipefd, out_fd);
+		handle_parent_process(params, pipefd, out_fd, pid);
 }

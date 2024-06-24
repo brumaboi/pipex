@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:08:47 by sbruma            #+#    #+#             */
-/*   Updated: 2024/06/22 23:22:36 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/24 15:37:03 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ void	open_files(int *file1, int *file2, char **argv, int argc)
 	if (*file1 < 0)
 		error_and_exit("open file1");
 	check_file_not_empty(file1, argv[1]);
+	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+	if (*file2 < 0)
+		error_and_exit("open file2");
+}
+
+// Function to open files for here_doc
+void	open_files_for_here_doc(int *file1, int *file2, char **argv, int argc)
+{
+	*file1 = STDIN_FILENO;
 	*file2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (*file2 < 0)
 		error_and_exit("open file2");

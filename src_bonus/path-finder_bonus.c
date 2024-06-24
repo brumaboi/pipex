@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:09:57 by sbruma            #+#    #+#             */
-/*   Updated: 2024/06/02 01:54:56 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/24 15:36:03 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static const char	*get_path_from_envp(char *const envp[])
 		envp++;
 	}
 	if (!path)
-	{
 		error_and_exit("PATH not found in environment");
-	}
 	return (path);
 }
 
@@ -39,9 +37,7 @@ static char	*duplicate_string(const char *str)
 
 	copy = ft_strdup(str);
 	if (!copy)
-	{
 		error_and_exit("strdup failed");
-	}
 	return (copy);
 }
 
@@ -53,16 +49,12 @@ static char	*build_full_path(const char *start, const char *cmd)
 	len = ft_strlen(start) + strlen(cmd) + 2;
 	full_path = (char *)malloc(len);
 	if (!full_path)
-	{
 		error_and_exit("malloc failed");
-	}
 	ft_strcpy(full_path, start);
 	ft_strcat(full_path, "/");
 	ft_strcat(full_path, cmd);
 	if (access(full_path, X_OK) == 0)
-	{
 		return (full_path);
-	}
 	free(full_path);
 	return (NULL);
 }
@@ -82,16 +74,12 @@ static char	*search_paths(char *path_copy, const char *cmd)
 		{
 			full_path = build_full_path(start, cmd);
 			if (full_path)
-			{
 				return (full_path);
-			}
 		}
 		start = end + 1;
 	}
 	if (*start != '\0')
-	{
 		return (build_full_path(start, cmd));
-	}
 	return (NULL);
 }
 

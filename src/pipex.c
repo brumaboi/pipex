@@ -6,7 +6,7 @@
 /*   By: sbruma <sbruma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:35:09 by sbruma            #+#    #+#             */
-/*   Updated: 2024/06/02 20:50:38 by sbruma           ###   ########.fr       */
+/*   Updated: 2024/06/24 16:02:15 by sbruma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	open_files(int *file1, int *file2, char **argv)
 	if (*file1 < 0)
 		error_and_exit("open file1");
 	check_file_not_empty(file1, argv[1]);
-	*file2 = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	*file2 = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (*file2 < 0)
 		error_and_exit("open file2");
 }
@@ -43,5 +43,5 @@ int	main(int argc, char *argv[], char *envp[])
 	close_fds(pipefd[0], pipefd[1], file1, file2);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
-	return (EXIT_SUCCESS);
+	return (0);
 }
